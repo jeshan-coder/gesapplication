@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, avoid_print, unused_import, unnecessary_import, implementation_imports
+
 import 'package:firebase_phone_auth_handler/firebase_phone_auth_handler.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -64,7 +66,7 @@ class _PhoneNumberInputState extends State<PhoneNumberInput> {
                                     phoneNumber: number.phoneNumber.toString()),
                               )));
                 },
-                child: Text('Validate'),
+                child: const Text('Validate'),
               ),
               // ElevatedButton(
               //   onPressed: () {

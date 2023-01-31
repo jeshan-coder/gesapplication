@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously, unused_local_variable
+
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -8,7 +10,6 @@ import 'package:ges/screens/profile/updateprofile.dart';
 import 'package:password_strength/password_strength.dart';
 import '../../color and text/style.dart';
 import '../../navigators.dart';
-import 'package:ges/screens/login/signup.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class LoginForm extends StatefulWidget {
@@ -22,7 +23,7 @@ class _LoginFormState extends State<LoginForm> {
   GlobalKey<FormState> loginform = GlobalKey();
   TextEditingController emailcontroller = TextEditingController();
   TextEditingController passwordcontroller = TextEditingController();
-  final storage = FlutterSecureStorage();
+  final storage = const FlutterSecureStorage();
   String? email;
   String? password;
   double strength = 0.0;
@@ -141,7 +142,8 @@ class _LoginFormState extends State<LoginForm> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => PhoneNumberInput()));
+                                builder: (context) =>
+                                    const PhoneNumberInput()));
                       },
                       child: Text(
                         "click here",

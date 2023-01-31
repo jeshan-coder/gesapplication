@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_if_null_operators
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../../color and text/style.dart';
@@ -63,7 +65,7 @@ class _PeopleState extends State<People> {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         data['about'] != null ? data['about'] : "",
-                        style: TextStyle(wordSpacing: 1.0),
+                        style: const TextStyle(wordSpacing: 1.0),
                         textAlign: TextAlign.center,
                       ),
                     )
