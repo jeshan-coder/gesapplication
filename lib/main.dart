@@ -1,8 +1,9 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:ges/screens/services/mainpage.dart';
 import 'screens/login/login.dart';
-import 'screens/login/phonenumberinput.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
