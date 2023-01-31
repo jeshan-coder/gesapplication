@@ -106,12 +106,14 @@ class _VerifyPhoneNumberScreenState extends State<VerifyPhoneNumberScreen>
             case 'invalid-phone-number':
               // invalid phone number
               return notification(context, 'Invalid phone number!');
+
             case 'invalid-verification-code':
               // invalid otp entered
               return notification(context, 'The entered OTP is invalid!');
             // handle other error codes
             default:
               notification(context, 'Something went wrong!');
+              navigatorpushandremove(context, Login());
             // handle error further if needed
           }
         },

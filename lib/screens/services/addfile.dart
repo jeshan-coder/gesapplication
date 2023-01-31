@@ -254,6 +254,7 @@ class _AddFileState extends State<AddFile> {
             return Center(
                 child: CircularProgressIndicator(
               value: percentage / 10,
+              color: Colors.black,
             ));
           } else {
             return Container();
