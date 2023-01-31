@@ -3,6 +3,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ges/forget_password/forgetpassword.dart';
+import 'package:ges/screens/login/phonenumberinput.dart';
 import 'package:ges/screens/profile/updateprofile.dart';
 import 'package:password_strength/password_strength.dart';
 import '../../color and text/style.dart';
@@ -140,7 +141,7 @@ class _LoginFormState extends State<LoginForm> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const SignUp()));
+                                builder: (context) => PhoneNumberInput()));
                       },
                       child: Text(
                         "click here",

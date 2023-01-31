@@ -42,25 +42,27 @@ class _PeopleState extends State<People> {
                             color: Color.fromARGB(193, 226, 225, 225)))),
                 child: ExpansionTile(
                   subtitle: Text(
-                    data['institution'],
+                    data['institution'] == null ? "" : data['institution'],
                     style: Userstyle.subtitletilestyle,
                   ),
                   title: Text(
-                    data['name'],
+                    data['name'] != null ? data['name'] : "",
                     style: Userstyle.textstyle,
                   ),
                   leading: ClipOval(
-                      child: Image.network(
-                    data['photoURL'],
-                    fit: BoxFit.cover,
-                    width: 50.0,
-                    height: 50.0,
-                  )),
+                      child: data['photoURL'] != null
+                          ? Image.network(
+                              data['photoURL'],
+                              fit: BoxFit.cover,
+                              width: 50.0,
+                              height: 50.0,
+                            )
+                          : Image.asset('images/unspecified.png')),
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        data['about'],
+                        data['about'] != null ? data['about'] : "",
                         style: TextStyle(wordSpacing: 1.0),
                         textAlign: TextAlign.center,
                       ),

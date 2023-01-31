@@ -11,7 +11,8 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
 class SignUp extends StatefulWidget {
-  const SignUp({super.key});
+  String phonenumber;
+  SignUp(this.phonenumber, {super.key});
 
   @override
   State<SignUp> createState() => _SignUpState();
@@ -115,7 +116,7 @@ class _SignUpState extends State<SignUp> {
                       },
                       icon: const Icon(
                         Icons.photo_camera_outlined,
-                        color: Colors.grey,
+                        color: Colors.cyan,
                       ),
                     ),
                   ],
@@ -329,7 +330,8 @@ class _SignUpState extends State<SignUp> {
       if (passwordcontroller.text == passwordconfirmcontroller.text &&
           imagefile != null &&
           email != null &&
-          institution != null) {
+          institution != null &&
+          name != null) {
         try {
           var value = await FirebaseAuth.instance
               .createUserWithEmailAndPassword(
@@ -372,7 +374,8 @@ class _SignUpState extends State<SignUp> {
                     'email': email,
                     'name': name,
                     'photoURL': photoURL,
-                    'institution': institution
+                    'institution': institution,
+                    'number': widget.phonenumber
                   }).then((value) {
                     FirebaseAuth.instance.signOut();
                     Navigator.pop(context);

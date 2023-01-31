@@ -3,10 +3,12 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:ges/navigators.dart';
 import '../../color and text/style.dart';
 // import 'package:open_file/open_file.dart';
 import 'package:open_filex/open_filex.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class DigitalLibrary extends StatefulWidget {
   const DigitalLibrary({super.key});
@@ -47,15 +49,23 @@ class _DigitalLibraryState extends State<DigitalLibrary> {
             Map<String, dynamic> data =
                 document.data()! as Map<String, dynamic>;
             return InkWell(
-                onTap: () => {openFile(url: data['downloadlink'])},
+                onTap: () {
+                  openFile(
+                      url: data['downloadlink'], filename: "gesdownload.pdf");
+                  notification(context, "requesting file");
+                  notification(context, "Please wait");
+                  notification(context, "Please wait");
+                  notification(context, "Please wait");
+                },
                 child: Card(
                     elevation: 5.0,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
                         children: [
-                          Text(
+                          AutoSizeText(
                             data['title'].toUpperCase(),
+                            maxLines: 5,
                             style: Userstyle.headercardstyle,
                             textAlign: TextAlign.center,
                           ),
@@ -110,5 +120,15 @@ class _DigitalLibraryState extends State<DigitalLibrary> {
     } catch (e) {
       return null;
     }
+  }
+
+  Widget alertdialog() {
+    return AlertDialog(
+      title: Text("Title"),
+      content: ElevatedButton(
+        onPressed: () {},
+        child: Text("download"),
+      ),
+    );
   }
 }

@@ -148,6 +148,11 @@ class _AddFileState extends State<AddFile> {
                   style: Userstyle.textbuttomstyle,
                   textAlign: TextAlign.center,
                 ),
+                Text(
+                  "file must be in pdf format",
+                  style: Userstyle.textbuttomstyle,
+                  textAlign: TextAlign.center,
+                ),
                 const SizedBox(
                   height: 20.0,
                 ),
@@ -197,13 +202,17 @@ class _AddFileState extends State<AddFile> {
       return;
     } else {
       final path = result.files.single.path!;
-      File newfile = File(path);
-      if (newfile.lengthSync() > 10000000) {
-        notification(context, "Sorry, please compress this file");
+      if (path.contains("pdf") == true) {
+        File newfile = File(path);
+        if (newfile.lengthSync() > 10000000) {
+          notification(context, "Sorry, please compress this file");
+        } else {
+          setState(() {
+            file = newfile;
+          });
+        }
       } else {
-        setState(() {
-          file = newfile;
-        });
+        notification(context, "Sorry only pdf is allowed");
       }
     }
   }
@@ -236,12 +245,16 @@ class _AddFileState extends State<AddFile> {
           if (snapshot.hasData) {
             final snap = snapshot.data!;
             final progress = snap.bytesTransferred / snap.totalBytes;
-            final percentage = (progress * 100);
+            final percentage = (progress * 100).round();
 
-            return Text(
-              '$percentage %',
-              style: Userstyle.textstyle,
-            );
+            // return Text(
+            //   '$percentage %',
+            //   style: Userstyle.textstyle,
+            // );
+            return Center(
+                child: CircularProgressIndicator(
+              value: percentage / 10,
+            ));
           } else {
             return Container();
           }

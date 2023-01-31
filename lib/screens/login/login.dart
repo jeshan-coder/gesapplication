@@ -30,7 +30,7 @@ class _LoginState extends State<Login> {
             children: [
               Center(
                 child: Image.asset(
-                  'ges.png',
+                  'images/logo.png',
                   height: 220.0,
                   width: 220.0,
                 ),
