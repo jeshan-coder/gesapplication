@@ -5,6 +5,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:ges/navigators.dart';
+import 'package:ges/screens/login/login.dart';
 import 'package:ges/screens/services/firebase_api.dart';
 import '../../color and text/style.dart';
 import 'package:password_strength/password_strength.dart';
@@ -97,7 +98,10 @@ class _SignUpState extends State<SignUp> {
                   height: 20.0,
                 ),
                 imagefile == null
-                    ? const Text("No image selected")
+                    ? const Text(
+                        "No image selected",
+                        style: TextStyle(color: Colors.red),
+                      )
                     : CircleAvatar(
                         radius: 60.0,
                         backgroundImage: FileImage(imagefile!),
@@ -314,7 +318,8 @@ class _SignUpState extends State<SignUp> {
                         name = namecontroller.text;
                         institution = institutioncontroller.text;
                         about = aboutcontroller.text;
-                        submitinfo();
+                        submitinfo().then((value) =>
+                            navigatorpushandremove(context, const Login()));
                       }
                     },
                     child: Text(
@@ -327,7 +332,7 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
-  void submitinfo() async {
+  Future submitinfo() async {
     if (signupform.currentState!.validate()) {
       if (passwordcontroller.text == passwordconfirmcontroller.text &&
           imagefile != null &&
